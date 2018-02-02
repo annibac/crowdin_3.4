@@ -3,6 +3,7 @@
 namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * User
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserRepository")
  */
-class User
+class User extends BaseUser
 {
     /**
      * @var int
@@ -19,63 +20,42 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="first_name", type="string", length=100)
      */
-    private $firstName;
+    protected $firstName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="last_name", type="string", length=100)
      */
-    private $lastName;
+    protected $lastName;
 
     /**
      * @var int
      *
      * @ORM\Column(name="birth_year", type="integer")
      */
-    private $birthYear;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=100)
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="login", type="string", length=100, unique=true)
-     */
-    private $login;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=100)
-     */
-    private $password;
+    protected $birthYear;
 
     /**
      * @var array
      *
      * @ORM\Column(name="lang", type="simple_array")
      */
-    private $lang;
+    protected $lang;
 
     /**
      * @var int
      *
      * @ORM\Column(name="malus", type="integer")
      */
-    private $malus;
+    protected $malus;
 
 
     /**
@@ -158,78 +138,6 @@ class User
     public function getBirthYear()
     {
         return $this->birthYear;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set login
-     *
-     * @param string $login
-     *
-     * @return User
-     */
-    public function setLogin($login)
-    {
-        $this->login = $login;
-
-        return $this;
-    }
-
-    /**
-     * Get login
-     *
-     * @return string
-     */
-    public function getLogin()
-    {
-        return $this->login;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return User
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
     }
 
     /**

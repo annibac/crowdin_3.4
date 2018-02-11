@@ -3,6 +3,7 @@
 namespace FileBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Source
@@ -26,6 +27,15 @@ class Key
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
      */
     private $file;
+
+    /**
+     * @ORM\OneToMany(targetEntity="FileBundle\Entity\Value", mappedBy="key")
+     */
+    private $values;
+
+    public function __construct() {
+        $this->values = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -54,5 +64,20 @@ class Key
         $this->file = $file;
         return $this;
     }
-}
 
+    /**
+     * @return mixed
+     */
+    public function getValues()
+    {
+        return $this->values;
+    }
+
+    /**
+     * @param mixed $values
+     */
+    public function setValues($values)
+    {
+        $this->values = $values;
+    }
+}

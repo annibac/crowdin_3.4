@@ -16,6 +16,8 @@ class Language
 {
     public function __construct() {
         $this->users = new ArrayCollection();
+        $this->targetFiles = new ArrayCollection();
+        $this->values = new ArrayCollection();
     }
 
     /**
@@ -52,6 +54,11 @@ class Language
      * @ORM\JoinTable(name="file_target_languages")
      */
     private $targetFiles;
+
+    /**
+     * @ORM\OneToMany(targetEntity="FileBundle\Entity\Value", mappedBy="language")
+     */
+    private $values;
 
     /**
      * Get id
@@ -138,18 +145,18 @@ class Language
     /**
      * @return mixed
      */
-    public function getContents()
+    public function getValues()
     {
-        return $this->contents;
+        return $this->values;
     }
 
     /**
-     * @param mixed $contents
+     * @param mixed $values
      * @return Language
      */
-    public function setContents($contents)
+    public function setValues($values)
     {
-        $this->contents = $contents;
+        $this->values = $values;
         return $this;
     }
 }

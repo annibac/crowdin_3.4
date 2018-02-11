@@ -4,6 +4,7 @@ namespace FileBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * File
@@ -57,6 +58,11 @@ class File
      * @ORM\OneToMany(targetEntity="FileBundle\Entity\Key", mappedBy="file")
      */
     private $keys;
+
+    public function __construct() {
+        $this->targetLanguages = new ArrayCollection();
+        $this->keys = new ArrayCollection();
+    }
 
     /**
      * Get id

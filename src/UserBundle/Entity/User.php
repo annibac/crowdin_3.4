@@ -4,6 +4,7 @@ namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * User
@@ -39,24 +40,31 @@ class User extends BaseUser
     /**
      * @var int
      *
-     * @ORM\Column(name="birth_year", type="integer")
-     */
-    protected $birthYear;
-
-    /**
-     * @var array
-     *
-     * @ORM\Column(name="lang", type="simple_array")
-     */
-    protected $lang;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="malus", type="integer")
+     * @ORM\Column(name="malus", type="integer", nullable=true)
      */
     protected $malus;
 
+    /**
+     * Many Groups have Many Users.
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Language", mappedBy="users")
+     */
+    private $languages;
+
+    /**
+     * @ORM\OneToMany(targetEntity="FileBundle\Entity\File", mappedBy="user")
+     */
+    private $files;
+
+    /**
+     * @ORM\OneToMany(targetEntity="FileBundle\Entity\Value", mappedBy="user")
+     */
+    private $values;
+
+    public function __construct() {
+        parent::__construct();
+        $this->files = new ArrayCollection();
+        $this->values = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -117,54 +125,6 @@ class User extends BaseUser
     }
 
     /**
-     * Set birthYear
-     *
-     * @param integer $birthYear
-     *
-     * @return User
-     */
-    public function setBirthYear($birthYear)
-    {
-        $this->birthYear = $birthYear;
-
-        return $this;
-    }
-
-    /**
-     * Get birthYear
-     *
-     * @return int
-     */
-    public function getBirthYear()
-    {
-        return $this->birthYear;
-    }
-
-    /**
-     * Set lang
-     *
-     * @param array $lang
-     *
-     * @return User
-     */
-    public function setLang($lang)
-    {
-        $this->lang = $lang;
-
-        return $this;
-    }
-
-    /**
-     * Get lang
-     *
-     * @return array
-     */
-    public function getLang()
-    {
-        return $this->lang;
-    }
-
-    /**
      * Set malus
      *
      * @param integer $malus
@@ -186,6 +146,54 @@ class User extends BaseUser
     public function getMalus()
     {
         return $this->malus;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValues()
+    {
+        return $this->values;
+    }
+
+    /**
+     * @param mixed $values
+     */
+    public function setValues($values)
+    {
+        $this->values = $values;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
+
+    /**
+     * @param mixed $files
+     */
+    public function setFiles($files)
+    {
+        $this->files = $files;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLanguages()
+    {
+        return $this->languages;
+    }
+
+    /**
+     * @param mixed $languages
+     */
+    public function setLanguages($languages)
+    {
+        $this->languages = $languages;
     }
 }
 

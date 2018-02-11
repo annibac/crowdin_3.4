@@ -3,6 +3,8 @@
 namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * User
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserRepository")
  */
-class User
+class User extends BaseUser
 {
     /**
      * @var int
@@ -19,64 +21,50 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="first_name", type="string", length=100)
      */
-    private $firstName;
+    protected $firstName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="last_name", type="string", length=100)
      */
-    private $lastName;
+    protected $lastName;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="birth_year", type="integer")
+     * @ORM\Column(name="malus", type="integer", nullable=true)
      */
-    private $birthYear;
+    protected $malus;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=100)
+     * Many Groups have Many Users.
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Language", mappedBy="users")
      */
-    private $email;
+    private $languages;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="login", type="string", length=100, unique=true)
+     * @ORM\OneToMany(targetEntity="FileBundle\Entity\File", mappedBy="user")
      */
-    private $login;
+    private $files;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=100)
+     * @ORM\OneToMany(targetEntity="FileBundle\Entity\Value", mappedBy="user")
      */
-    private $password;
+    private $values;
 
-    /**
-     * @var array
-     *
-     * @ORM\Column(name="lang", type="simple_array")
-     */
-    private $lang;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="malus", type="integer")
-     */
-    private $malus;
-
+    public function __construct() {
+        parent::__construct();
+        $this->files = new ArrayCollection();
+        $this->values = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -137,126 +125,6 @@ class User
     }
 
     /**
-     * Set birthYear
-     *
-     * @param integer $birthYear
-     *
-     * @return User
-     */
-    public function setBirthYear($birthYear)
-    {
-        $this->birthYear = $birthYear;
-
-        return $this;
-    }
-
-    /**
-     * Get birthYear
-     *
-     * @return int
-     */
-    public function getBirthYear()
-    {
-        return $this->birthYear;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set login
-     *
-     * @param string $login
-     *
-     * @return User
-     */
-    public function setLogin($login)
-    {
-        $this->login = $login;
-
-        return $this;
-    }
-
-    /**
-     * Get login
-     *
-     * @return string
-     */
-    public function getLogin()
-    {
-        return $this->login;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return User
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Set lang
-     *
-     * @param array $lang
-     *
-     * @return User
-     */
-    public function setLang($lang)
-    {
-        $this->lang = $lang;
-
-        return $this;
-    }
-
-    /**
-     * Get lang
-     *
-     * @return array
-     */
-    public function getLang()
-    {
-        return $this->lang;
-    }
-
-    /**
      * Set malus
      *
      * @param integer $malus
@@ -278,6 +146,54 @@ class User
     public function getMalus()
     {
         return $this->malus;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValues()
+    {
+        return $this->values;
+    }
+
+    /**
+     * @param mixed $values
+     */
+    public function setValues($values)
+    {
+        $this->values = $values;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
+
+    /**
+     * @param mixed $files
+     */
+    public function setFiles($files)
+    {
+        $this->files = $files;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLanguages()
+    {
+        return $this->languages;
+    }
+
+    /**
+     * @param mixed $languages
+     */
+    public function setLanguages($languages)
+    {
+        $this->languages = $languages;
     }
 }
 

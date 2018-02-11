@@ -3,6 +3,7 @@
 namespace FileBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * File
@@ -29,19 +30,33 @@ class File
     private $name;
 
     /**
-     * @var string
+     * @ORM\Column(type="string")
+     * @Assert\File(mimeTypes={ "application/pdf" })
      *
-     * @ORM\Column(name="primary_lang", type="string", length=100)
      */
-    private $primaryLang;
+    private $file;
 
     /**
-     * @var array
-     *
-     * @ORM\Column(name="target_lang", type="simple_array")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Language")
+     * @ORM\JoinColumn(name="source_language_id", referencedColumnName="id")
      */
-    private $targetLang;
+    private $sourceLanguage;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Language", mappedBy="targetFiles")
+     */
+    private $targetLanguages;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="files")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
+    /**
+     * @ORM\OneToMany(targetEntity="FileBundle\Entity\Key", mappedBy="file")
+     */
+    private $keys;
 
     /**
      * Get id
@@ -78,51 +93,91 @@ class File
     }
 
     /**
-     * Set primaryLang
-     *
-     * @param string $primaryLang
-     *
+     * @return mixed
+     */
+    public function getSourceLanguage()
+    {
+        return $this->sourceLanguage;
+    }
+
+    /**
+     * @param mixed $sourceLanguage
      * @return File
      */
-    public function setPrimaryLang($primaryLang)
+    public function setSourceLanguage($sourceLanguage)
     {
-        $this->primaryLang = $primaryLang;
-
+        $this->sourceLanguage = $sourceLanguage;
         return $this;
     }
 
     /**
-     * Get primaryLang
-     *
-     * @return string
+     * @return mixed
      */
-    public function getPrimaryLang()
+    public function getTargetLanguages()
     {
-        return $this->primaryLang;
+        return $this->targetLanguages;
     }
 
     /**
-     * Set targetLang
-     *
-     * @param array $targetLang
-     *
+     * @param mixed $targetLanguages
      * @return File
      */
-    public function setTargetLang($targetLang)
+    public function setTargetLanguages($targetLanguages)
     {
-        $this->targetLang = $targetLang;
-
+        $this->targetLanguages = $targetLanguages;
         return $this;
     }
 
     /**
-     * Get targetLang
-     *
-     * @return array
+     * @return mixed
      */
-    public function getTargetLang()
+    public function getUser()
     {
-        return $this->targetLang;
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     * @return File
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getKeys()
+    {
+        return $this->keys;
+    }
+
+    /**
+     * @param mixed $keys
+     * @return File
+     */
+    public function setKeys($keys)
+    {
+        $this->keys = $keys;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param mixed $file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
     }
 }
 

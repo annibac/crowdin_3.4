@@ -1,5 +1,9 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block fos_user_content %}
-{% include "@FOSUser/Registration/register_content.html.twig" %}
+<div style="height:100vh; background: url({{ asset("img/login-bg.jpg") }}) no-repeat center center fixed;">
+    <div id="login-page" >
+        {% include "@FOSUser/Registration/register_content.html.twig" %}
+    </div>
+</div>
 {% endblock fos_user_content %}

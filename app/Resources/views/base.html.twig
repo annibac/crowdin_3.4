@@ -12,11 +12,16 @@
         <link rel="stylesheet" href="{{ asset('css/table-responsive.css') }}">
         <link rel="stylesheet" href="{{ asset('css/to-do.css') }}">
         <link rel="stylesheet" href="{{ asset('js/fancybox/jquery.fancybox.css') }}">
-        <link rel="stylesheet" href="{{ asset('js/fullcalendar/bootstrap-fulllcalendar.css') }}">
+        <link rel="stylesheet" href="{{ asset('js/fullcalendar/bootstrap-fullcalendar.css') }}">
         <link rel="stylesheet" href="{{ asset('css/zabuto_calendar.css') }}">
         <link rel="stylesheet" href="{{ asset('js/gritter/css/jquery.gritter.css') }}">
         <link rel="stylesheet" href="{{ asset('js/gritter/css/jquery.gritter0.css') }}">
         <link rel="stylesheet" href="{{ asset('js/jquery-easy-pie-chart.jquery-easy-pie-chart.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/new-age.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/device-mockups/device-mockups.min.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 
 
         <script src="{{ asset('js/jquery.min.js') }}"></script>
@@ -45,7 +50,6 @@
         <script src="{{ asset('js/jquery.js') }}"></script>
         <script src="{{ asset('js/jquery.min_jquery.min_1.js') }}"></script>
         <script src="{{ asset('js/nicescroll.js') }}"></script>
-        <script src="{{ asset('js/scrollTo.min.js') }}"></script>
         <script src="{{ asset('js/jquery.sparkline.js') }}"></script>
         <script src="{{ asset('js/jquery.tagsinput.js') }}"></script>
         <script src="{{ asset('js/jquery.ui.touch-punch.min.js') }}"></script>
@@ -55,17 +59,25 @@
         <script src="{{ asset('js/sparkline-chart.js') }}"></script>
         <script src="{{ asset('js/tasks.js') }}"></script>
         <script src="{{ asset('js/zabuto_calendar.js') }}"></script>
-        <script src="{{ asset('js/bootstrap-inputmask/bootstrap-inputmask.js') }}"></script>
         <script src="{{ asset('js/chart-master/Chart.js') }}"></script>
         <script src="{{ asset('js/fancybox/jquery.fancybox.js') }}"></script>
         <script src="{{ asset('js/fullcalendar/fullcalendar.min.js') }}"></script>
         <script src="{{ asset('js/gritter/js/jquery.gritter.js') }}"></script>
-        <script src="{{ asset('js/jquery-easy-pie-chart.jquery-easy-pie-chart.js') }}"></script>
+        <meta charset="utf-8">
+        <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
+        <!-- Plugin JavaScript -->
+        <script src="{{ asset('jquery-easing/jquery.easing.min.js') }}"></script>
 
+        <!-- Custom scripts for this template -->
+        <script src="{{ asset('js/new-age.min.js') }}"></script>
+
+        <title>Crowdin</title>
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <body id="page-top">
+    {% block body %}{% endblock %}
+    {% block footer %}{% endblock %}
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>

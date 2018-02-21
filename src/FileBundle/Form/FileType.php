@@ -17,7 +17,6 @@ class FileType extends AbstractType
             ->add('file', FileType1::class, array('label' => 'File (Yml file)'))
             ->add('sourceLanguage')
             ->add('targetLanguages')
-            ->add('user')
             ->add('save', SubmitType::class, array(
             'attr' => array('class' => 'save'),
         ));;

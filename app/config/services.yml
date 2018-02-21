@@ -38,3 +38,7 @@ services:
        class: AppBundle\Form\RegistrationType
        tags:
            - { name: form.type, alias: app_user_registration }
+
+    app.yaml_service:
+      class: FileBundle\Service\YamlService
+      arguments: [ '@doctrine.orm.entity_manager' ]

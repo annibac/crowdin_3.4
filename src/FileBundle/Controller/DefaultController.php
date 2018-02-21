@@ -18,7 +18,7 @@ class DefaultController extends Controller
      */
     public function newAction(Request $request)
     {
-
+        $em = $this->getDoctrine()->getManager();
         $fileEntity = new File();
 
         $form = $this->createForm(FileType::class, $fileEntity);
@@ -38,10 +38,11 @@ class DefaultController extends Controller
             // Update the 'brochure' property to store the PDF file name
             // instead of its contents
             $fileEntity->setFile($fileName);
-            $fileEntity->setSourceLanguage($form->get('sourceLanguage')->getData());
-            $fileEntity->setTargetLanguages($form->get('targetLanguages')->getData());
-
-            die(dump('MDR'));
+            $fileEntity->setUser($this->getUser());
+            $yaml_service = $this->container->get('app.yaml_service');
+            $yaml_service->yamlParser($fileEntity);
+            $em->persist($fileEntity);
+            $em->flush();
         }
 
         return $this->render('FileBundle:Default:index.html.twig', array(
@@ -59,22 +60,4 @@ class DefaultController extends Controller
         return md5(uniqid());
     }
 
-    private function yamlParser($fileEntity)
-    {
-        $file_contents = Yaml::parseFile(file_get_contents('/path/to/file.yaml'));
-
-        foreach ($file_contents as $file_key => $file_value)
-        {
-            if (!$this->getDoctrine()->getRepository('FileBundle:Key')->find($file_key)) {
-                $keyEntity = new Key();
-                $valueEntity = new Value();
-                $keyEntity->setFile($fileEntity);
-                $valueEntity->setKey($file_key);
-                $valueEntity->setLanguage($fileEntity->getSourceLanguage());
-                $keyEntity->setValues($valueEntity->$valueEntity);
-            }
-
-        }
-
-    }
 }

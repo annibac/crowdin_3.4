@@ -5,7 +5,9 @@ namespace FileBundle\Controller;
 use FileBundle\Entity\File;
 use FileBundle\Entity\Key;
 use FileBundle\Entity\Value;
+use FileBundle\Form\AddTrad;
 use FileBundle\Form\FileType;
+use UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -59,5 +61,36 @@ class DefaultController extends Controller
         // uniqid(), which is based on timestamps
         return md5(uniqid());
     }
+
+    /**
+     * @Route("/add/traduction")
+     */
+    public function addTradAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $fileEntity = new Value();
+
+        $form = $this->createForm(AddTrad::class, $fileEntity);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+        }
+
+        return $this->render('FileBundle:Default:addTrad.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * @Route("/user/files")
+     */
+    public function UserFilesAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $files = $this->getUser()->getFiles();
+
+        return $this->render('FileBundle:Default:userFiles.html.twig', array('files' => $files));
+    }
+
 
 }

@@ -18,8 +18,10 @@ class YamlService {
     public function yamlParser($path, $fileEntity)
     {
         $file_contents = Yaml::parseFile($path.'/'.$fileEntity->getFile());
+//        dump($file_contents);
+//        die();
 
-        foreach ($file_contents as $file_key => $file_value)
+        foreach ($file_contents['parameters'] as $file_key => $file_value)
         {
             if ($file_value != NULL)
             {

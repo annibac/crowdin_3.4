@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% include 'menu.html.twig' %}
+    <section id="main-content">
+        <section class="wrapper" style="margin-top: 0px;">
+            {%  for file in files %}
+                {{ file.name }}
+                {#{{ file.sourceLanguage.name }}#}
+                {#{{ file.targetLanguage.name }}#}
+            {% endfor %}
+        </section><! --/wrapper -->
+    </section> <! MENU -->
+
+{% endblock %}

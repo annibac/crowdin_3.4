@@ -1,7 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b68be504-f79f-407b-bc77-f7895f4de983" name="Default" comment="" />
+    <list default="true" id="b68be504-f79f-407b-bc77-f7895f4de983" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/brochures/74873adea51108183ef36fda9bf9ba7e.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/brochures/7e8579ae68138feb7d31bd83488639a6.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/055f85743c5575e0aac938637f4bdcf3.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/07b42725c91915e9fa7fc205626d25ad.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/09ac3ae32d0a0e391aa7ff236d483ffa.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/15a963b49c3f427ab2501230dc12ee8a.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/185d6e0e7dec6e356d4cede58c9aaf8d.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/1a8a24e2ea8a010fe460c2f7bb82d78d.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/27bc36cf5806f561e9402e87e08e60ba.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/2a464b62c6e2e69517c78409db51d5fa.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/2e1ad7185a0f1b912c221e03b564d6a2.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/309bf2bc8437384473d437e938cdf7df.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/33a9ea55cc53d64b927960996085d560.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/3560086c6548cae0f09ceae6360c89bc.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/370595f31e6bafc4b57cde5f47a10668.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/3ca7c11407bd38937e0e75aae44ec022.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/3fe496219c673eb77948c153362ed7d3.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/410ac7ef618c90ae21ebda1de42eb32f.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/488e960c17879c61e32557eb9f8f4867.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/4f1bb9c223d0596ef5ede62169286305.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/5bc6f382d749b7caf93b1ae3a7d9aa5e.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/6519a8d7c59f961085bdfd610f06f8f1.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/674eea5f94e97563cd30393bdd32a2c8.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/792802beb87d304d8ff9ecc43f39b5b9.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/8a7837a1b1a22c29f5f6178385ac9895.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/8b1d7468555a04df4a1c7ad722974fec.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/8ff9bd83bd585be8526a5b1f2fe7bee7.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/97c61ea408a9005f1d4bc5ed2007906d.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/9ac9ca05061877e1840fb9e20fb67f6b.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/a42e9952f7cfe928bfb91b9686a67acd.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/b09c6f72e1e9bbb1bd8107a624bf3f0e.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/bbc621ff36612bcead54a2c5bdcf075c.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/de3e92cb8c7e7e6b87c8e570c95fa305.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/e95ea561e2663800c0d71fcdf575c8e2.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/ee2b5ed4320dc78e062318c9bf7c6cb7.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/files/fd1d727b86cfb49d3635e7ef75c3a4de.txt" afterPath="" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -779,13 +816,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50701000" />
+    <option name="totallyTimeSpent" value="50719000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />

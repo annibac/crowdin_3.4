@@ -24,7 +24,6 @@ class DefaultController extends Controller
         $form = $this->createForm(FileType::class, $fileEntity);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // $file stores the uploaded PDF file
             $file = $fileEntity->getFile();
 
             $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
@@ -41,6 +40,7 @@ class DefaultController extends Controller
             $fileEntity->setUser($this->getUser());
             $yaml_service = $this->container->get('app.yaml_service');
             $yaml_service->yamlParser($fileEntity);
+
             $em->persist($fileEntity);
             $em->flush();
         }

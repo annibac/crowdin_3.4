@@ -81,4 +81,8 @@ class Key
     {
         $this->values = $values;
     }
+
+    public function addFile(Value $value) {
+        $this->values[] = $value;
+    }
 }

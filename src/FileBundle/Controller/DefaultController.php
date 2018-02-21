@@ -38,8 +38,8 @@ class DefaultController extends Controller
             // instead of its contents
             $fileEntity->setFile($fileName);
             $fileEntity->setUser($this->getUser());
-            $yaml_service = $this->container->get('app.yaml_service');
-            $yaml_service->yamlParser($fileEntity);
+            $yaml_service = $this->container->get('file.yaml_service');
+            $yaml_service->yamlParser($this->getParameter('files_directory'), $fileEntity);
 
             $em->persist($fileEntity);
             $em->flush();

@@ -23,7 +23,7 @@ class Key
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FileBundle\Entity\File", inversedBy="keys")
+     * @ORM\ManyToOne(targetEntity="FileBundle\Entity\File", inversedBy="keys", cascade={"persist"})
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
      */
     private $file;
@@ -85,4 +85,10 @@ class Key
     public function addFile(Value $value) {
         $this->values[] = $value;
     }
+
+    public function addValue($value)
+    {
+        $this->getValues()->add($value);
+    }
+
 }

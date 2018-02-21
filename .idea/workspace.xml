@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b68be504-f79f-407b-bc77-f7895f4de983" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Language.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Language.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FileBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/FileBundle/Controller/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FileBundle/Entity/File.php" afterPath="$PROJECT_DIR$/src/FileBundle/Entity/File.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FileBundle/Entity/Key.php" afterPath="$PROJECT_DIR$/src/FileBundle/Entity/Key.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UserBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/UserBundle/Entity/User.php" />
-    </list>
+    <list default="true" id="b68be504-f79f-407b-bc77-f7895f4de983" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -128,7 +121,7 @@
       <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/FileBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
+            <state relative-caret-position="514">
               <caret line="37" column="38" lean-forward="false" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
               <folding>
                 <element signature="e#41#68#0#PHP" expanded="true" />
@@ -1238,7 +1231,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FileBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
+        <state relative-caret-position="514">
           <caret line="37" column="38" lean-forward="false" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
           <folding>
             <element signature="e#41#68#0#PHP" expanded="true" />

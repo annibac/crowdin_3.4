@@ -3,6 +3,8 @@
 namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FileBundle\Entity\File;
+use FileBundle\Entity\Value;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -164,6 +166,10 @@ class User extends BaseUser
         $this->values = $values;
     }
 
+    public function addValue(Value $value) {
+        $this->values[] = $value;
+    }
+
     /**
      * @return mixed
      */
@@ -178,6 +184,10 @@ class User extends BaseUser
     public function setFiles($files)
     {
         $this->files = $files;
+    }
+
+    public function addFile(File $file) {
+        $this->files[] = $file;
     }
 
     /**

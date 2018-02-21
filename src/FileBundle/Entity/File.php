@@ -2,6 +2,7 @@
 
 namespace FileBundle\Entity;
 
+use AppBundle\Entity\Language;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -32,19 +33,28 @@ class File
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\File(mimeTypes={ "application/pdf" })
+     * @Assert\File()
      *
      */
     private $file;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Language")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Language")
      * @ORM\JoinColumn(name="source_language_id", referencedColumnName="id")
      */
     private $sourceLanguage;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Language", mappedBy="targetFiles")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Language", inversedBy="targetFiles")
+     * @ORM\JoinTable(
+     *  name="file_target_languages",
+     *  joinColumns={
+     *      @ORM\JoinColumn(name="file_id", referencedColumnName="id")
+     *  },
+     *  inverseJoinColumns={
+     *      @ORM\JoinColumn(name="target_language_id", referencedColumnName="id")
+     *  }
+     * )
      */
     private $targetLanguages;
 
@@ -62,6 +72,16 @@ class File
     public function __construct() {
         $this->targetLanguages = new ArrayCollection();
         $this->keys = new ArrayCollection();
+    }
+
+    public function addTargetLanguage(Language $language) {
+        $language->addTargetFile($this);
+        $this->targetLanguages[] = $language;
+        return $this;
+    }
+
+    public function addKey(Key $key) {
+        $this->keys[] = $key;
     }
 
     /**

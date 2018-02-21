@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use UserBundle\Entity\User;
+use FileBundle\Entity\File;
 
 /**
  * Languages
@@ -50,8 +51,7 @@ class Language
     private $users;
 
     /**
-     * @ORM\ManyToMany(targetEntity="FileBundle\Entity\File", inversedBy="targetLanguages")
-     * @ORM\JoinTable(name="file_target_languages")
+     * @ORM\ManyToMany(targetEntity="FileBundle\Entity\File", mappedBy="targetLanguages", cascade={"persist"})
      */
     private $targetFiles;
 
@@ -59,6 +59,17 @@ class Language
      * @ORM\OneToMany(targetEntity="FileBundle\Entity\Value", mappedBy="language")
      */
     private $values;
+
+    function __toString()
+    {
+        return $this->name;
+    }
+
+    public function addTargetFile(File $file) {
+        $this->targetFiles[] = $file;
+
+        return $this;
+    }
 
     /**
      * Get id

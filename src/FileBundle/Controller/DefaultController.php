@@ -18,13 +18,12 @@ class DefaultController extends Controller
      */
     public function newAction(Request $request)
     {
-
+        $em = $this->getDoctrine()->getManager();
         $fileEntity = new File();
 
         $form = $this->createForm(FileType::class, $fileEntity);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // $file stores the uploaded PDF file
             $file = $fileEntity->getFile();
 
             $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
@@ -38,10 +37,8 @@ class DefaultController extends Controller
             // Update the 'brochure' property to store the PDF file name
             // instead of its contents
             $fileEntity->setFile($fileName);
-            $fileEntity->setSourceLanguage($form->get('sourceLanguage')->getData());
-            $fileEntity->setTargetLanguages($form->get('targetLanguages')->getData());
-
-            die(dump('MDR'));
+            $em->persist($fileEntity);
+            $em->flush();
         }
 
         return $this->render('FileBundle:Default:index.html.twig', array(

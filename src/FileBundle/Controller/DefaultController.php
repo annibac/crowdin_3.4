@@ -64,13 +64,14 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/add/traduction/{id}")
+     * @Route("/add/traduction")
      */
-    public function addTradAction(Request $request, $id = 10)
+    public function addTradAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $fileEntity = new Value();
         $repo = $this->getDoctrine()->getRepository(Value::class);
+        $id = rand(2, 38);
         $obj= $repo->find($id);
 
         $form = $this->createForm(AddTrad::class, $fileEntity);

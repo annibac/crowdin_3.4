@@ -19,7 +19,7 @@
                         {%  for file in files %}
                             <tr>
                                 <td>{{ file.id }}</td>
-                                <td>{{ file.name }}</td>
+                                <td><a href="file/traduction/{{ file.id }}">{{ file.name }}</a></td>
                                 <td>{% if file.sourceLanguage %} {{ file.sourceLanguage.name }} {% endif %}</td>
                                 <td>{{ file.keys|length }}</td>
                             </tr>

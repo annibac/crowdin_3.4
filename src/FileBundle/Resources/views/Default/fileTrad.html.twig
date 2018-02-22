@@ -17,20 +17,21 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>{{ value.key.id }}</td>
-                                <td>{{ value.value }}</td>
-                                <td>{{ form_row(form.value, { 'attr' : { 'class': 'form-control round-form' } }) }}</td>
-                                <td>{{ form_row(form.language, { 'attr' : { 'class': 'form-control round-form' } }) }}</td>
-                                <td>{{ form_row(form.save, { 'attr' : { 'class': 'btn btn-theme' } }) }}</td>
-                            </tr>
+                        {% for array in values %}
+                            {% for value in array %}
+                                <tr>
+                                    <td>{{ value.value }}</td>
+                                    <td>{{ value.value }}</td>
+                                    <td>{{ form_row(form.value, { 'attr' : { 'class': 'form-control round-form' } }) }}</td>
+                                    <td>{{ form_row(form.language, { 'attr' : { 'class': 'form-control round-form' } }) }}</td>
+                                </tr>
+                                {% endfor %}
+                        {% endfor %}
                         </tbody>
                     </table>
-
+                    {{ form_row(form.save, { 'attr' : { 'class': 'btn btn-theme' } }) }}
                     {{ form_end(form) }}
-                <! --/content-panel -->
-                <button type="button" class="btn btn-warning">NEXT</button>
-                </div>
+                </div><! --/content-panel -->
             </div>
         </section><! --/wrapper -->
     </section> <! MENU -->

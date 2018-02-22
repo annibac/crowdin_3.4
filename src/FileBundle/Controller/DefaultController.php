@@ -91,6 +91,36 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("user/file/traduction/{id}")
+     */
+    public function fileTradAction(Request $request, $id = 10)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $fileEntity = new Value();
+        $repo = $this->getDoctrine()->getRepository(File::class);
+        $obj= $repo->find($id);
+        $values = $obj->getKeys()->getValues();
+//        dump($values);
+//        die();
+
+        $form = $this->createForm(AddTrad::class, $fileEntity);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $fileEntity->setLanguage($form->get('language')->getData());
+            $fileEntity->setValue($form->get('value')->getData());
+            $fileEntity->setKey($obj->getKey());
+            $fileEntity->setUser($this->getUser());
+            $em->persist($fileEntity);
+            $em->flush();
+        }
+
+        return $this->render('FileBundle:Default:fileTrad.html.twig', array(
+            'form' => $form->createView(),
+            'values' => $values,
+        ));
+    }
+
+    /**
      * @Route("/user/files")
      */
     public function UserFilesAction(Request $request)

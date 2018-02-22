@@ -40,6 +40,7 @@ class DefaultController extends Controller
             // instead of its contents
             $fileEntity->setFile($fileName);
             $fileEntity->setUser($this->getUser());
+            $fileEntity->setSourceLanguage($form->get('sourceLanguage')->getData());
             $yaml_service = $this->container->get('file.yaml_service');
             $yaml_service->yamlParser($this->getParameter('files_directory'), $fileEntity);
 

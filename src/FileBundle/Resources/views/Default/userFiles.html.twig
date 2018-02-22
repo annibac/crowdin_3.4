@@ -3,11 +3,37 @@
     {% include 'menu.html.twig' %}
     <section id="main-content">
         <section class="wrapper" style="margin-top: 0px;">
-            {%  for file in files %}
-                {{ file.name }}
+            <div class="col-md-12 mt">
+                <div class="content-panel">
+                    <table class="table table-hover">
+                        <h4><i class="fa fa-angle-right"></i> Files uploaded</h4>
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>File Name</th>
+                            <th>Source Language</th>
+                            <th>Number of traduction</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {%  for file in files %}
+                            <tr>
+                                <td>{{ file.id }}</td>
+                                <td>{{ file.name }}</td>
+                                <td>{% if file.sourceLanguage %} {{ file.sourceLanguage.name }} {% endif %}</td>
+                                <td>{{ file.keys|length }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div><! --/content-panel -->
+            </div><!-- /col-md-12 -->
+            </div><!-- row -->
+            {#{%  for file in files %}#}
+                {#{{ file.name }}#}
                 {#{{ file.sourceLanguage.name }}#}
                 {#{{ file.targetLanguage.name }}#}
-            {% endfor %}
+            {#{% endfor %}#}
         </section><! --/wrapper -->
     </section> <! MENU -->
 

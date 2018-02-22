@@ -205,5 +205,6 @@ class File
     {
         $this->file = $file;
     }
+
 }
 

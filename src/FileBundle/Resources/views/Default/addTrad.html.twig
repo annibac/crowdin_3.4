@@ -3,7 +3,32 @@
     {% include 'menu.html.twig' %}
     <section id="main-content">
         <section class="wrapper" style="margin-top: 0px;">
-            {{ form_widget(form) }}
+            <div class="col-md-12 mt">
+                <div class="content-panel">
+                    {{ form_start(form, { 'attr' : { 'class': 'form-horizontal style-form' } }) }}
+                    <table class="table table-hover">
+                        <h4><i class="fa fa-angle-right"></i> Files uploaded</h4>
+                        <thead>
+                        <tr>
+                            <th>Key</th>
+                            <th>Value</th>
+                            <th>Traduction</th>
+                            <th>Target language</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ value.key.id }}</td>
+                                <td>{{ value.value }}</td>
+                                <td>{{ form_row(form.value, { 'attr' : { 'class': 'form-control round-form' } }) }}</td>
+                                <td>{{ form_row(form.language, { 'attr' : { 'class': 'form-control round-form' } }) }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    {{ form_row(form.save, { 'attr' : { 'class': 'btn btn-theme' } }) }}
+                    {{ form_end(form) }}
+                </div><! --/content-panel -->
+            </div>
         </section><! --/wrapper -->
     </section> <! MENU -->
 

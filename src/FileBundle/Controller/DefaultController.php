@@ -64,21 +64,29 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/add/traduction")
+     * @Route("/add/traduction/{id}")
      */
-    public function addTradAction(Request $request)
+    public function addTradAction(Request $request, $id = 10)
     {
         $em = $this->getDoctrine()->getManager();
         $fileEntity = new Value();
+        $repo = $this->getDoctrine()->getRepository(Value::class);
+        $obj= $repo->find($id);
 
         $form = $this->createForm(AddTrad::class, $fileEntity);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
+            $fileEntity->setLanguage($form->get('language')->getData());
+            $fileEntity->setValue($form->get('value')->getData());
+            $fileEntity->setKey($obj->getKey());
+            $fileEntity->setUser($this->getUser());
+            $em->persist($fileEntity);
+            $em->flush();
         }
 
         return $this->render('FileBundle:Default:addTrad.html.twig', array(
             'form' => $form->createView(),
+            'value' => $obj,
         ));
     }
 
@@ -92,6 +100,5 @@ class DefaultController extends Controller
 
         return $this->render('FileBundle:Default:userFiles.html.twig', array('files' => $files));
     }
-
 
 }

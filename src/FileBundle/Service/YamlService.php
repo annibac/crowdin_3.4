@@ -32,6 +32,7 @@ class YamlService {
                 $key->addValue($value);
                 $value->setKey($key);
                 $value->setValue($file_value);
+                $value->setUser($this->getUser());
                 $this->em->persist($key);
                 $this->em->persist($value);
             }

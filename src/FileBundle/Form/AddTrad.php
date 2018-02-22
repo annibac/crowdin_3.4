@@ -14,8 +14,8 @@ class AddTrad extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('value')
-            ->add('language')
+            ->add('value', null, array('label' => false))
+            ->add('language', null, array('label' => false))
             ->add('save', SubmitType::class, array(
                 'attr' => array('class' => 'save'),
             ));;

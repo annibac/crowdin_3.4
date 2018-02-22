@@ -5,6 +5,7 @@ namespace FileBundle\Service;
 use Doctrine\ORM\EntityManager;
 use FileBundle\Entity\Key;
 use FileBundle\Entity\Value;
+use UserBundle\Entity\User;
 use Symfony\Component\Yaml\Yaml;
 
 class YamlService {
@@ -32,7 +33,7 @@ class YamlService {
                 $key->addValue($value);
                 $value->setKey($key);
                 $value->setValue($file_value);
-                $value->setUser($this->getUser());
+                $value->setUser($fileEntity->getUser());
                 $this->em->persist($key);
                 $this->em->persist($value);
             }

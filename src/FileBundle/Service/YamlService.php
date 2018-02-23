@@ -30,6 +30,7 @@ class YamlService {
                 $value = new Value();
                 $key->setFile($fileEntity);
                 $value->setLanguage($fileEntity->getSourceLanguage());
+                $key->setName($file_key);
                 $key->addValue($value);
                 $value->setKey($key);
                 $value->setValue($file_value);

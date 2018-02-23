@@ -64,30 +64,29 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/add/traduction")
+     * @Route("/add/traduction/{id}", name="add_trad")
      */
-    public function addTradAction(Request $request)
+    public function addTradAction(Request $request, Value $value)
     {
         $em = $this->getDoctrine()->getManager();
-        $fileEntity = new Value();
-        $repo = $this->getDoctrine()->getRepository(Value::class);
-        $id = rand(2, 38);
-        $obj= $repo->find($id);
+        $valueEntity = new Value();
 
-        $form = $this->createForm(AddTrad::class, $fileEntity);
+        $form = $this->createForm(AddTrad::class, $valueEntity);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $fileEntity->setLanguage($form->get('language')->getData());
-            $fileEntity->setValue($form->get('value')->getData());
-            $fileEntity->setKey($obj->getKey());
-            $fileEntity->setUser($this->getUser());
-            $em->persist($fileEntity);
+        if ($form->isSubmitted() && $form->isValid()){
+            $valueEntity->setLanguage($form->get('language')->getData());
+            $valueEntity->setValue($form->get('value')->getData());
+            $valueEntity->setKey($value->getKey());
+            $valueEntity->setUser($this->getUser());
+            $em->persist($valueEntity);
             $em->flush();
+            $id = rand(2,50);
+            return $this->redirectToRoute('add_trad', array('id' => $id));
         }
 
         return $this->render('FileBundle:Default:addTrad.html.twig', array(
             'form' => $form->createView(),
-            'value' => $obj,
+            'value' => $value,
         ));
     }
 
@@ -97,27 +96,13 @@ class DefaultController extends Controller
     public function fileTradAction(Request $request, $id = 10)
     {
         $em = $this->getDoctrine()->getManager();
-        $fileEntity = new Value();
+        $valueEntity = new Value();
         $repo = $this->getDoctrine()->getRepository(File::class);
         $obj= $repo->find($id);
-        $values = $obj->getKeys()->getValues();
-//        dump($values);
-//        die();
-
-        $form = $this->createForm(AddTrad::class, $fileEntity);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $fileEntity->setLanguage($form->get('language')->getData());
-            $fileEntity->setValue($form->get('value')->getData());
-            $fileEntity->setKey($obj->getKey());
-            $fileEntity->setUser($this->getUser());
-            $em->persist($fileEntity);
-            $em->flush();
-        }
+        $keys = $obj->getKeys();
 
         return $this->render('FileBundle:Default:fileTrad.html.twig', array(
-            'form' => $form->createView(),
-            'values' => $values,
+            'keys' => $keys,
         ));
     }
 
@@ -127,9 +112,47 @@ class DefaultController extends Controller
     public function UserFilesAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $files = $this->getUser()->getFiles();
+        if ($this->getUser())
+            $files = $this->getUser()->getFiles();
+        else
+            $files = "User is anonym";
 
         return $this->render('FileBundle:Default:userFiles.html.twig', array('files' => $files));
     }
 
+    /**
+     * @Route("/choose")
+     */
+    public function ChooseTradAction(Request $request)
+    {
+        $id = rand(2, 50);
+        return $this->render('FileBundle:Default:ChooseTrad.html.twig', array('id' => $id));
+    }
+
+    /**
+     * @Route("/choose/file", name="choose_file")
+     */
+    public function ChooseFileAction(Request $request, $id = 10)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $files = $em->getRepository(File::class)->findAll();
+
+        return $this->render('FileBundle:Default:chooseFileTrad.html.twig', array('files' => $files));
+
+    }
+
+    /**
+     * @Route("choose/add/file_traduction/{id}")
+     */
+    public function addFileTradAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repo = $this->getDoctrine()->getRepository(File::class);
+        $obj= $repo->find($id);
+        $keys = $obj->getKeys();
+
+        return $this->render('FileBundle:Default:addFileTrad.html.twig', array(
+            'keys' => $keys,
+        ));
+    }
 }

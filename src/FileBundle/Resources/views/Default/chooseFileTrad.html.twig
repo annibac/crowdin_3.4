@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% include 'menu.html.twig' %}
+<section id="main-content">
+    <section class="wrapper" style="margin-top: 0px;">
+        <div class="col-md-12 mt">
+            <div class="content-panel">
+                <table class="table table-hover">
+                    <h4><i class="fa fa-angle-right"></i> Choose a file</h4>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>File Name</th>
+                        <th>Source Language</th>
+                        <th>Number of traduction</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {%  for file in files %}
+                    <tr>
+                        <td>{{ file.id }}</td>
+                        <td><a href="add/file_traduction/{{ file.id }}">{{ file.name }}</a></td>
+                        <td>{% if file.sourceLanguage %} {{ file.sourceLanguage.name }} {% endif %}</td>
+                        <td>{{ file.keys|length }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div><! --/content-panel -->
+        </div>
+    </section><! --/wrapper -->
+</section> <! MENU -->
+
+{% endblock %}

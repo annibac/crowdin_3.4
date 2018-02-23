@@ -3,7 +3,9 @@
 {% block fos_user_content %}
 <div style="height:100vh; background: url({{ asset("img/login-bg.jpg") }}) no-repeat center center fixed;">
     <div id="login-page" >
-        {% include "@FOSUser/Registration/register_content.html.twig" %}
+        <div class="container">
+            {% include "@FOSUser/Registration/register_content.html.twig" %}
+        </div>
     </div>
 </div>
 {% endblock fos_user_content %}

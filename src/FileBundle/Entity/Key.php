@@ -23,6 +23,13 @@ class Key
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=100)
+     */
+    private $name;
+
+    /**
      * @ORM\ManyToOne(targetEntity="FileBundle\Entity\File", inversedBy="keys", cascade={"persist"})
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
      */
@@ -35,6 +42,22 @@ class Key
 
     public function __construct() {
         $this->values = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
     }
 
     /**
